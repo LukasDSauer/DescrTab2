@@ -77,6 +77,8 @@ utils::globalVariables(".")
 #' all observations (i.e. #(Missing) / N), but calculates all other catetgory percentages with respect to the non-missing
 #' observations (e.g. #A / N_nonmissing). This means that if You have three categories: "A" with 10 counts, "B" with 10 counts
 #' and "(Missing)" with 10 counts, they will become "A": 10 (50\%), "B": 10 (50\%), "(Missing)": 10 (33\%)}
+#'
+#' \item{\code{"caption"}}{ adds a table caption to the LaTeX, Word or PDf document}
 #'   }
 #'  }
 #' }
@@ -229,7 +231,8 @@ descr <-
                "no_missing_percent",
                "missing_as_regular_category",
                "missing_as_separate_category"
-             )
+             ),
+             caption = NULL
            ),
 
            test_options = list(
@@ -1071,7 +1074,7 @@ create_DescrPrint <- function(DescrListObj, print_format) {
   printObj[["variables"]] <- list()
   printObj[["lengths"]] <- list()
   printObj[["group"]] <- DescrListObj[["group"]]
-
+  printObj[["caption"]] <- DescrListObj[["format"]][["options"]][["print_p"]]
   printObj[["group_names"]] <- group_names
 
 
@@ -1200,6 +1203,8 @@ print_tex <- function(DescrPrintObj, silent = FALSE) {
   lengths <- c(unlist(DescrPrintObj[["lengths"]]) - 1)
 
   labels <- unlist(unlist(DescrPrintObj[["labels"]]))
+  caption <- DescrPrintObj[["caption"]]
+  message(caption)
 
   indx_varnames <- logical()
   for (i in 1:length(DescrPrintObj$variables)) {
@@ -1256,7 +1261,8 @@ print_tex <- function(DescrPrintObj, silent = FALSE) {
       linesep = "",
       align = alig,
       escape = FALSE,
-      col.names = N_numbers
+      col.names = N_numbers,
+      caption = caption
     ) %>%
     `if`(
       print_footnotes,
