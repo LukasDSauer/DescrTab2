@@ -1438,7 +1438,10 @@ print_word <- function(DescrPrintObj, silent = FALSE) {
       )
     }
   }
-  ft <- flextable::set_caption(ft, caption)
+  if(!is.null(caption)){
+    ft <- flextable::set_caption(ft, caption)
+  }
+
 
   ft <- ft %>%
     autofit()
