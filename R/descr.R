@@ -1074,7 +1074,7 @@ create_DescrPrint <- function(DescrListObj, print_format) {
   printObj[["variables"]] <- list()
   printObj[["lengths"]] <- list()
   printObj[["group"]] <- DescrListObj[["group"]]
-  printObj[["caption"]] <- DescrListObj[["format"]][["options"]][["print_p"]]
+  printObj[["caption"]] <- DescrListObj[["format"]][["options"]][["caption"]]
   printObj[["group_names"]] <- group_names
 
 
@@ -1204,7 +1204,6 @@ print_tex <- function(DescrPrintObj, silent = FALSE) {
 
   labels <- unlist(unlist(DescrPrintObj[["labels"]]))
   caption <- DescrPrintObj[["caption"]]
-  message(caption)
 
   indx_varnames <- logical()
   for (i in 1:length(DescrPrintObj$variables)) {
@@ -1310,6 +1309,7 @@ print_html <- function(DescrPrintObj, silent = FALSE) {
 
 
   labels <- unlist(unlist(DescrPrintObj[["labels"]]))
+  caption <- DescrPrintObj[["caption"]]
   names(lengths) <- c(labels)
 
   indx_varnames <- logical()
@@ -1353,7 +1353,8 @@ print_html <- function(DescrPrintObj, silent = FALSE) {
       linesep = "",
       align = alig,
       escape = FALSE,
-      col.names = N_numbers
+      col.names = N_numbers,
+      caption = caption
     ) %>%
     kable_styling() %>%
     `if`(
@@ -1374,11 +1375,12 @@ print_html <- function(DescrPrintObj, silent = FALSE) {
   invisible(DescrPrintObj)
 }
 
-#' @importFrom flextable flextable bold padding add_header border_inner align autofit
+#' @importFrom flextable flextable bold padding add_header border_inner align autofit set_caption
 #' @importFrom officer fp_border
 #' @importFrom utils capture.output head tail
 print_word <- function(DescrPrintObj, silent = FALSE) {
   tibl <- DescrPrintObj[["tibble"]]
+  caption <- DescrPrintObj[["caption"]]
   var_names <- names(DescrPrintObj[["variables"]])
   lengths <- c(unlist(DescrPrintObj[["lengths"]]) - 1)
   names(lengths) <- c(var_names)
@@ -1436,6 +1438,7 @@ print_word <- function(DescrPrintObj, silent = FALSE) {
       )
     }
   }
+  ft <- flextable::set_caption(ft, caption)
 
   ft <- ft %>%
     autofit()
