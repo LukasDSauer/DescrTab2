@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • DescrTab2</title>
+<title>S3 override for knit_print function for DescrList objects. — knit_print.DescrList • DescrTab2</title>
 
 
 <!-- jquery -->
@@ -41,7 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Articles" />
+<meta property="og:title" content="S3 override for knit_print function for DescrList objects. — knit_print.DescrList" />
+<meta property="og:description" content="S3 override for knit_print function for DescrList objects." />
 
 
 
@@ -60,7 +61,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-article-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -136,26 +137,48 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Articles</h1>
+    <h1>S3 override for knit_print function for DescrList objects.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/imbi-heidelberg/DescrTab2/blob/master/R/descr.R'><code>R/descr.R</code></a></small>
+    <div class="hidden name"><code>knit_print.DescrList.Rd</code></div>
     </div>
 
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <dl>
-        <dt><a href="a_usage_guide.html">Usage guidance</a></dt>
-        <dd></dt>
-        <dt><a href="b_test_choice_tree_pdf.pdf">Test choice tree (PDF)</a></dt>
-        <dd></dt>
-        <dt><a href="c_other_software_comparison.html">Comparison with other software</a></dt>
-        <dd></dt>
-        <dt><a href="d_validation_statement.html">Validation statement</a></dt>
-        <dd></dt>
-        <dt><a href="e_maintenance_guide.html">Maintenance guidance</a></dt>
-        <dd></dt>
-      </dl>
+    <div class="ref-description">
+    <p>S3 override for knit_print function for DescrList objects.</p>
     </div>
+
+    <pre class="usage"><span class='co'># S3 method for DescrList</span>
+<span class='fu'>knit_print</span><span class='op'>(</span><span class='va'>x</span>, print_format <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span><span class='op'>(</span><span class='st'>"print_format"</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, silent <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>a</p></td>
+    </tr>
+    <tr>
+      <th>print_format</th>
+      <td><p>b</p></td>
+    </tr>
+    <tr>
+      <th>silent</th>
+      <td><p>c</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>abc</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>outputs formatted table depending on the environment (.RMD) which it is called from</p>
+
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
